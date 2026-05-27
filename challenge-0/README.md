@@ -285,7 +285,7 @@ As mentioned in [Context and Background](#-context-and-background), there are se
 To perform certain tasks in the hackathon, you need the following permissions:
 
 - `Azure AI Developer` on the **Foundry project** resource (agent/project operations)
-- `Azure AI User` on the **AI Services** resource (agent create/run operations)
+ag- `Foundry User` on the **AI Services** resource (agent create/run operations)
 - `Cognitive Services OpenAI Contributor` on the **Azure OpenAI** resource (calling chat completions)
 
 > [!IMPORTANT]
@@ -306,7 +306,7 @@ az role assignment create \
   --role "Azure AI Developer" \
   --scope "$AZURE_AI_PROJECT_RESOURCE_ID"
 
-# Assign "Azure AI User" at the AI Services resource scope
+# Assign "Foundry User" at the AI Services resource scope
 # This is required for agent operations (create/run agents)
 # Derive the AI Services ID from the project resource ID
 AI_SERVICES_ID="${AZURE_AI_PROJECT_RESOURCE_ID%/projects/*}"
@@ -314,7 +314,7 @@ AI_SERVICES_ID="${AZURE_AI_PROJECT_RESOURCE_ID%/projects/*}"
 az role assignment create \
   --assignee-object-id "$ME_OBJECT_ID" \
   --assignee-principal-type User \
-  --role "Azure AI User" \
+  --role "Foundry User" \
   --scope "$AI_SERVICES_ID"
 
 # Assign "Cognitive Services OpenAI Contributor" at the Azure OpenAI resource scope
